@@ -1,173 +1,32 @@
-# emberx-select
+# emberx-select-blockless
 
-[![npm version](https://badge.fury.io/js/emberx-select.svg)](http://badge.fury.io/js/emberx-select)
-[![Ember Observer Score](http://emberobserver.com/badges/emberx-select.svg)](http://emberobserver.com/addons/emberx-select)
-[![Build Status](https://travis-ci.org/thefrontside/emberx-select.svg?branch=master)](https://travis-ci.org/thefrontside/emberx-select)
-
-A Select component based on the native html select.
-
-Why a select component? Because `Ember.Select` is hard to use, and
-really, all you want to do is just use a `<select>` tag dammit. The
-only difference is that you want value of the options to be any object
-and not just a string.
-
-By allowing arbitrary html to appear in the template of the select
-element, you can use it just like you would normally. This means
-things like having `<optgroup>` tags inside your select, or even plain
-old `<option>` elements to represent things like empty values.
-
-XSelect thinly wraps a native `<select>` element so that it can be object
-and binding aware. It is used in conjuction with the `x-option`
-component to construct select boxes. E.g.
-
-```handlebars
-{{#x-select value=bob action="selectPerson"}}
-  {{#x-option value=fred}}Fred Flintstone{{/x-option}}
-  {{#x-option value=bob}}Bob Newhart{{/x-option}}
-{{/x-select}}
-```
-
-the options are always up to date, so that when the object bound to
-`value` changes, the corresponding option becomes selected.
-
-Whenever the select tag receives a change event, it will fire
-`action`
-
-### Multiselect
-
-As of version 1.1.0, `emberx-select` supports the `multiple`
-option. This means you can pass an array as its value, and it will set
-its selections directly on that array.
-
-```handlebars
-{{#x-select value=selections multiple=true action="selectionsChanged"}}
- {{#x-option value=fred}}Fred Flintstone{{/x-option}}
- {{#x-option value=bob}}Bob Newhart{{/x-option}}
- {{#x-option value=andrew}}Andrew WK{{/x-option}}
-{{/x-select}}
-```
-
-The selections array will be initialized to an empty array if not present.
-
-> Heads Up! This will mutate the contents of your value array as the
-> user changes their selections. This can lead to strange behavior and
-> inconsistencies if you are using computed arrays and/or ember-data
-> `hasMany` relationships. Just remember, you can't go wrong if you
-> use just a simple array.
-
-### Test Helpers
-
-Since `emberx-select` uses internal identifiers as the `value` attribute, it
-doesn't integrate with the `fillIn` test helper. But don't fret, we've automatically
-injected the test helper into your app.
-
-#### Using the test helper
-
-As of version 1.1.3 we support both multiselects and regular selects. To use you
-need to specify the class on the on the select as the first argument and the rest
-of the arguments are the options you'd like to select. For example:
-
-```js
-//... Single select
-  select('.my-drop-down', 'My Option');
-//...
-```
-
-Multiselect
-```js
-//... Multiselect
-  select('.my-drop-down', 'My Option', 'My Option Two', 'My Option Three');
-//...
-```
-
-#### Why am I getting a JSHint error?
-
-You need to run the generator: `ember g emberx-select`
-
-#### Why am I getting a "Can't find variable: select" error?
-
-You need to either run the generator (`ember g emberx-select`) or import the test helper into your
-`test-helper.js` file:
-
-```js
-import registerSelectHelper from './helpers/register-select-helper';
-registerSelectHelper();
-```
-
-## Blockless Form
-
-As of version 1.1.2, `x-select` can be invoked in a blockless form
-which is API compatible with `Ember.SelectView`. While most of the
-time you want to use it in block-form, there are some cases where it
-makes more sense to specify your select on a single line. Also, it
-makes a more incremental approach to migrating from `SelectView` possible.
-
-```handlebars
-{{x-select action="tagYouAreIt" disabled=isDisabled
-  multiple=true
-  content=folks
-  selection=it
-  optionValuePath="content.id"
-  optionLabelPath="content.name"}}
-```
-
-## Action and Action Arguments
-
-The action that is dispatched by x-select whenever the selected value or values
-change has a function signature of:
+[![npm version](https://badge.fury.io/js/emberx-select-blockless.svg)](http://badge.fury.io/js/emberx-select-blockless)
+[![Ember Observer Score](http://emberobserver.com/badges/emberx-select-blockless.svg)](http://emberobserver.com/addons/emberx-select-blockless)
+[![Build Status](https://travis-ci.org/thefrontside/emberx-select-blockless.svg?branch=master)](https://travis-ci.org/thefrontside/emberx-select-blockless)
 
 
+This Addon extends
+[emberx-select](https://github.com/thefrontside/emberx-select) so that
+it can be used in blockless form. It has a syntax compatible with the
+now deprecated `Ember.View` which makes transitioning your
+applications a bit easier.
 
-```js
-/**
-* @param value {Object} the value selected by the user.
-* @param component {Ember.Component} the x-select component itself
-*/
-function (value, component) {
-  // action body...
-}
-```
-
-Most of the time all you need is the value that has been selected, but
-sometimes your action requires more context than just that. In those
-cases, you can associate arbitrary attributes with the component
-itself and use them later inside your action handler.  For example:
-
-```handlebars
-{{#x-select action="didMakeSelection" default=anything}}
-  <option>Nothing</option>
-  {{#x-option value=something}}Something{{/x-option}}
-{{/x-select}}
-```
-then, inside your action handler:
-
-```js
-export default Ember.Route.extend({
-  actions: {
-    didMakeSelection: function(selection, component) {
-      if (selection) {
-        this.set('selection', selection)
-      } else {
-        this.set('selection', component.get('default'))
-      }
-    }
-  }
-});
-```
+If you can, use vanilla `x-select`. If you must, use `x-select-blockless`
 
 
 ## EmberX
 
-emberx-select is part of the "missing components of ember" collectively
+emberx-select-blockless is part of the "missing components of ember" collectively
 known as emberx. See also:
 
+* [emberx-select](https://github.com/thefrontside/emberx-select)
 * [emberx-slider](https://github.com/thefrontside/emberx-slider)
 * [emberx-files](https://github.com/thefrontside/emberx-files)
 
 ## Installation
 
 ```
-ember install emberx-select
+ember install emberx-select-blockless
 ```
 
 ## Running Tests
