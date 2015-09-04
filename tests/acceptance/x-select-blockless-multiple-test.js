@@ -42,8 +42,8 @@ describe('XSelect: Multiple Selection Blockless', function() {
     });
 
     it('invokes action', function() {
-      expect(this.controller.get('it.length')).to.equal(1);
-      expect(this.controller.get('it.firstObject.name')).to.deep.equal('Stanley');
+      expect(this.controller.get('tagged.length')).to.equal(1);
+      expect(this.controller.get('tagged.firstObject.name')).to.deep.equal('Stanley');
     });
   });
 
@@ -62,7 +62,7 @@ describe('XSelect: Multiple Selection Blockless', function() {
       this.$().prop('selectedIndex', 3).trigger('change');
     });
     it("has the empty array as a value", function() {
-      expect(this.controller.get('it.length')).to.equal(0);
+      expect(this.controller.get('tagged.length')).to.equal(0);
     });
   });
 
