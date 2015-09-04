@@ -1,6 +1,6 @@
 {
   "name": "emberx-select-blockless",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Extends the x-select component so that it can be used in blockless form a-la the now deprecated Ember.SelectView.",
   "directories": {
     "doc": "doc",
