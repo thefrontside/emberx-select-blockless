@@ -34,7 +34,7 @@ known as emberx. See also:
 
 * [emberx-select](https://github.com/thefrontside/emberx-select)
 * [emberx-slider](https://github.com/thefrontside/emberx-slider)
-* [emberx-files](https://github.com/thefrontside/emberx-files)
+* [emberx-file-input](https://github.com/thefrontside/emberx-file-input)
 
 ## Installation
 
