@@ -1,3 +1,9 @@
+# Warning: This project has been deprecated
+
+We have deprecated this project and will no longer support it. If you would like
+to continue using a blockless style `<select>` we highly recommend
+[ember-ted-select](https://github.com/tedconf/ember-ted-select).
+
 # emberx-select-blockless
 
 [![npm version](https://badge.fury.io/js/emberx-select-blockless.svg)](http://badge.fury.io/js/emberx-select-blockless)
@@ -23,7 +29,7 @@ If you can, use vanilla `x-select`. If you must, use `x-select-blockless`.
   optionValuePath="content.id"
   optionLabelPath="content.name"}}
 ```
-**A note about selection vs. value**  
+**A note about selection vs. value**
 When using Ember.Select, one would set either the **value** or **selection** property in order to bind a selected option to a property.  X-Select departs from Ember.Select and does not support the **selection** option.  Instead, only use the **value** option when binding to properties.
 
 
