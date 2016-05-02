@@ -21,6 +21,22 @@ export default XSelectComponent.extend({
   }),
 
   /**
+   * Alias to `value`.
+   * This way we accept `value` or `selection` properties.
+   *
+   * @property selection
+   */
+  selection: Ember.computed.alias('value'),
+
+  /**
+   * Alias to `prompt`.
+   * This way we accept `prompt` or `placeholder` properties.
+   *
+   * @property placeholder
+   */
+  placeholder: Ember.computed.alias('prompt'),
+
+  /**
    * Auxiliary computed property that replaces `content.`
    * in `optionLabelPath`.
    *
